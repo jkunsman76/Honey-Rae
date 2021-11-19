@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-
+import { useHistory } from "react-router-dom"
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([])
-    const [employeeSpecialtiy,setSpecialty ] = useState("")
+
+    const history = useHistory()
     useEffect(
         () => {
             fetch("http://localhost:8088/employees")
@@ -11,30 +12,26 @@ export const EmployeeList = () => {
                 .then(
                     (employeeArray) => {
                         setEmployees(employeeArray)
-                     }
+                    }
                 )
         },
         []
     )
-    useEffect(() => {
-        const specialtyArray = employees.map(employee => employee.specialty)
-        setSpecialty(specialtyArray.join(", "))
 
-    }, [employees])
 
     return (
         <>
             <div>
-                Specialties: {employeeSpecialtiy}
+                <button onClick={() => history.push("/employees/create")}>New Employee</button>
             </div>
-        {
-            employees.map(
-                (employeeObj) => {
-                    
-                    return <p key={`employee--${employeeObj.id}`}>{employeeObj.name}</p>
-                 }
-            )
-        }
+            {
+                employees.map(
+                    (employeeObj) => {
+
+                        return <p key={`employee--${employeeObj.id}`}>{employeeObj.name}, Specializes in: {employeeObj.specialty}</p>
+                    }
+                )
+            }
         </>
     )
 }
