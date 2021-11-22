@@ -1,11 +1,12 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { CustomerList} from "./customers/CustomerList"
-import { EmployeeList} from "./employees/EmployeeList"
-import { TicketList} from "./serviceTickets/TicketList"
-import { TicketForm} from "./serviceTickets/TicketForm"
-import { EmployeeForm} from "./employees/EmployeeForm"
-
+import { CustomerList } from "./customers/CustomerList"
+import { EmployeeList } from "./employees/EmployeeList"
+import { TicketList } from "./serviceTickets/TicketList"
+import { TicketForm } from "./serviceTickets/TicketForm"
+import { EmployeeForm } from "./employees/EmployeeForm"
+import { Ticket } from "./serviceTickets/Ticket"
+import { Employee } from "./employees/Employee"
 
 
 // ApplicationViews works in tandem with NavBar
@@ -18,8 +19,8 @@ import { EmployeeForm} from "./employees/EmployeeForm"
 
 export const ApplicationViews = () => {
     return (
-        <>  
-        
+        <>
+
             <Route exact path="/customers">
                 <CustomerList />
             </Route>
@@ -39,7 +40,13 @@ export const ApplicationViews = () => {
             <Route path="/tickets/create">
                 <TicketForm />
             </Route>
-        
+            <Route exact path="/tickets/:ticketId(\d+)">
+                <Ticket />
+            </Route>
+            <Route exact path="/employees/:employeeId(\d+)">
+                <Employee />
+            </Route>
+
         </>
     )
 }

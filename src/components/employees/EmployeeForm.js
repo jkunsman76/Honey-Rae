@@ -32,13 +32,13 @@ const history = useHistory()
 
         
     }
-
+//! not html.... is jsx vvvvvvv
     return (
         <form className="employeeForm">
             <h2 className="employeeForm__title">New Employee</h2>
             <fieldset>
                 <div className="employeeForm-group">
-                    <label htmlFor="name">Name:</label>
+                    <label HTMLFor="name">Name:</label>
                     <input
                         onChange={(event) => {
                             const copy = { ...employee }
@@ -52,7 +52,7 @@ const history = useHistory()
                     />
                 </div>
                 <div className="employeeForm-group">
-                    <label htmlFor="specialty">Specialty:</label>
+                    <label HTMLFor="specialty">Specialty:</label>
                     <input
                         onChange={(event) => {
                             const copy = { ...employee }
